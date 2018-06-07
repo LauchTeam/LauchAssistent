@@ -1,7 +1,7 @@
 # MAIN
 
 import datetime
-from ctypes import c_bool
+import JSONHandler as jh
 
 ######## DATABASE #######
 countryPlay = {'Deutschland': '21.12.2018', 'Spanien': '01.06.2019', 'Sizilien': '01.01.2018'}
