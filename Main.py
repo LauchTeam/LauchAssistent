@@ -14,7 +14,9 @@ def getDate():
 def findCountry(search, countries):
     return countries[search]
 
+# Get Country from Request-File
 var_country = jh.ReadJSON('Request.json')
 
+# Get & Print Play Date from Database
 playDate = findCountry(var_country, countryPlay)
 print("Game is on " + str(playDate))
