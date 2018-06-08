@@ -21,4 +21,4 @@ var_country = handler.GetCountry()
 
 # Get & Print Play Date from Database
 playDate = findCountry(var_country, countryPlay)
-print("Game is on " + str(playDate))
+print("Game for "+ var_country + " is on " + str(playDate))
