@@ -1,7 +1,7 @@
 # MAIN
 
 import datetime
-import HandlerTest
+import HandlerRequest
 
 ######## DATABASE #######
 countryPlay = {'Deutschland': '21.12.2018', 'Spanien': '01.06.2019', 'Sizilien': '01.01.2018'}
@@ -15,7 +15,7 @@ def findCountry(search, countries):
     return countries[search]
 
 # Get Country from Request-File
-handler = HandlerTest.RequestHandler()
+handler = HandlerRequest.HandlerRequest()
 handler.LoadRequest('Request.json')
 var_country = handler.GetCountry()
 
