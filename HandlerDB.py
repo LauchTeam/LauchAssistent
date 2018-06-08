@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+# import mysql for easy db communication
 import mysql.connector
 
 class HandlerDB:
@@ -20,3 +19,6 @@ class HandlerDB:
         self.Exec = self.DB.cursor()
         
         return self.Exec.execute(sql_statement)
+
+    def CloseConnection(self):
+        self.DB.close()
