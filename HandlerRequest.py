@@ -2,7 +2,7 @@
 import json
 
 #Class: handler to process requests
-class RequestHandler:
+class HandlerRequest:
     
     #Init
     def __init__(self):       

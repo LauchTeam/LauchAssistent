@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\__pycache__"
   ],
-  "SelectedNode": "\\Main.py",
+  "SelectedNode": "\\JSONHandler.py",
   "PreviewInSolutionExplorer": false
 }
