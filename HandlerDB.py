@@ -17,8 +17,11 @@ class HandlerDB:
         
     def Execute(self, sql_statement):
         self.Exec = self.DB.cursor()
-        
-        return self.Exec.execute(sql_statement)
+        self.Exec.execute(sql_statement)
+
+        result = self.Exec.fetchall()
+
+        return result
 
     def CloseConnection(self):
         self.DB.close()
