@@ -4,7 +4,7 @@
     "queryText": "wann spielt deutschland?",
     "action": "act_country",
     "parameters": {
-      "par_country": "Deutschland"
+      "par_country": "Germany"
     },
     "allRequiredParamsPresent": true,
     "fulfillmentMessages": [

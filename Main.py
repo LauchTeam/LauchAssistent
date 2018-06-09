@@ -1,32 +1,52 @@
-# MAIN
-
+# import needed classes
 import datetime
 import HandlerRequest
 import HandlerDB
 
-######## DATABASE #######
-countryPlay = {'Deutschland': '21.12.2018', 'Spanien': '01.06.2019', 'Sizilien': '01.01.2018'}
-#########################
+class HandlerAction():
 
-def getDate():
-    nowDate = datetime.datetime.now()
-    return [nowDate.year, nowDate.month, nowDate.day, nowDate.hour, nowDate.minute, nowDate.second]
+    # Init
+    def __init__(self):       
+        # variable definition
+        self.handler_request = HandlerRequest.HandlerRequest()
+        self.handler_db = HandlerDB.HandlerDB()
+        self.var_country = ""
+        self.var_date = ""
+        self.var_action = ""
 
-def findCountry(search, countries):
-    return countries[search]
+        # connect to DB
+        self.handler_db.ConntectTo("root", "", "127.0.0.1", "lauchdb")
+        # Test DB Connection
+        print(self.handler_db.DB.is_connected())
 
-# Get Country from Request-File
-handler = HandlerRequest.HandlerRequest()
-handler.LoadRequest('Request.json')
-var_country = handler.GetCountry()
+    def GetCountry(self):
+        # Get Country from Request-File
+        self.var_country = self.handler_request.GetCountry()
 
-# Get & Print Play Date from Database
-playDate = findCountry(var_country, countryPlay)
-print("Game for "+ var_country + " is on " + str(playDate))
+    def GetDate(self):
+        # get date from database
+        tmp_date = self.handler_db.Execute("SELECT country_date FROM country WHERE country_name='" + self.var_country + "';")
+        # TODO: change format of tmp_date
+        self.var_date = tmp_date
 
-# Test DB Connection
-sql = HandlerDB.HandlerDB()
-sql.ConntectTo("root", "", "127.0.0.1", "lauchdb")
-print(sql.DB.is_connected())
-print(sql.Execute("SELECT country_date FROM country WHERE country_name='Germany';"))
-sql.CloseConnection()
+    def ChooseAction(self, request):
+        # load request
+        self.handler_request.LoadRequest(request)
+        # get the requested action
+        self.var_action = self.handler_request.GetAction()
+
+        # choose code to fullfill action
+        if self.var_action == "act_country":
+            # get next game data
+            self.GetCountry()
+            self.GetDate()
+            # print next game
+            print(self.var_country + "s next match: " + str(self.var_date))
+        # action not known yet
+        else:
+            print("Can't handle that action yet.")
+
+# test code
+test = HandlerAction()
+test.ChooseAction("Request.json")
+

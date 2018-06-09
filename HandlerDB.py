@@ -5,7 +5,7 @@ class HandlerDB:
     
     # Init
     def __init__(self):       
-        #variable definition
+        # variable definition
         self.DB = ""
     
     # Function: Connect to Database
