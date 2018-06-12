@@ -15,7 +15,7 @@ class HandlerAction():
         self.var_action = ""
 
         # connect to DB
-        self.handler_db.ConntectTo("root", "", "127.0.0.1", "lauchdb")
+        self.handler_db.ConntectTo("xershoxx", "Claudio1", "db4free.net", "lauchdb")
         # Test DB Connection
         print(self.handler_db.DB.is_connected())
 
@@ -25,7 +25,7 @@ class HandlerAction():
 
     def GetDate(self):
         # get date from database
-        tmp_date = self.handler_db.Execute("SELECT country_date FROM country WHERE country_name='" + self.var_country + "';")
+        tmp_date = self.handler_db.Execute("SELECT country_date FROM tab_Country WHERE country_name='" + self.var_country + "';")
         # TODO: change format of tmp_date
         self.var_date = tmp_date
 
