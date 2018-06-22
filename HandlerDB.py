@@ -1,5 +1,6 @@
 # Import mysql for easy db communication
 import mysql.connector
+import psycopg2
 
 class HandlerDB:
     
@@ -9,10 +10,19 @@ class HandlerDB:
         self.DB = ""
     
     # Function: Connect to Database
-    def ConntectTo(self, var_user, var_pass, var_host, var_db):
+    def connectTo(self):
         try:
+            # Data
+            params = {
+            'database': 'xershoxx',
+            'user': 'flo.ries',
+            'password': 'florian1',
+            'host': '37.221.193.30',
+            'port': 5432
+            }
+            self.DB = psycopg2.connect(**params)
+
             # Establish Connection
-            self.DB = mysql.connector.connect(user=var_user, password=var_pass, host=var_host, database=var_db)
             # return success
             return True
         except:
