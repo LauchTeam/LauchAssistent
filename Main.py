@@ -38,8 +38,14 @@ class HandlerAction():
             # get next game data
             self.GetCountry()
             self.GetDate()
-            # print next game
-            print(self.var_country + "s next match: " + str(self.var_date))
+
+            # Print next games
+            print("Next Match(es) " + self.var_country + ":")
+            for i in range(len(self.var_date)):
+                row = self.var_date[i]
+                date = row[2]
+                print(str(i+1) + ". " + str(date))
+
         # action not known yet
         else:
             print("Can't handle that action yet.")
