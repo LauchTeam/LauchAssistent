@@ -16,8 +16,6 @@ class HandlerAction():
 
         # connect to DB
         self.handler_db.connectTo()
-        # Test DB Connection
-        # print(self.handler_db.DB.is_connected())
 
     def GetCountry(self):
         # Get Country from Request-File
@@ -35,7 +33,7 @@ class HandlerAction():
         # get the requested action
         self.var_action = self.handler_request.GetAction()
 
-        # choose code to fullfill action
+        # choose code to fulfill action
         if self.var_action == "act_country":
             # get next game data
             self.GetCountry()

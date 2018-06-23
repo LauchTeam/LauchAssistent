@@ -12,7 +12,8 @@ class HandlerDB:
     # Function: Connect to Database
     def connectTo(self):
         try:
-            # Data
+
+            # Parameter for DB connection
             params = {
             'database': 'xershoxx',
             'user': 'flo.ries',
@@ -20,11 +21,13 @@ class HandlerDB:
             'host': '37.221.193.30',
             'port': 5432
             }
-            self.DB = psycopg2.connect(**params)
 
             # Establish Connection
+            self.DB = psycopg2.connect(**params)
+
             # return success
             return True
+
         except:
             # Error message
             return False
