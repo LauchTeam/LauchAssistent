@@ -32,13 +32,13 @@ class HandlerDB:
             return False
 
     # Function: Execute SQL Statement and return result
-    def execute(self, sql_statement):
+    def getresult(self, sql_statement):
         # Execute SQL Statement
-        exe = self.DB.
-        exe.execute(sql_statement)
+        self.cur = self.DB.cursor
+        self.cur.execute(sql_statement)
 
         # Save result
-        result = exe.fetchall()
+        result = self.cur.fetchall()
 
         # return result
         return result

@@ -8,11 +8,11 @@ def hello_world():
     db = handlerdb.HandlerDB()
     data = request.get_json()
 
-    kpi_name = data["queryResult"]["parameters"]["var_kpi"]
-    # kpi_value = db.execute("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = '" + data["queryResult"]["parameters"]["var_kpi"] + "';")
-    kpi_value = db.execute("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = 'IT Spend';")
+    db.connectto()
 
-    # print(data["queryResult"]["parameters"]["par_country"])
+    kpi_name = data["queryResult"]["parameters"]["var_kpi"]
+    kpi_value = db.getresult("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = '" + data["queryResult"]["parameters"]["var_kpi"] + "';")
+
     message = "Die KPI " + kpi_name + "hat folgenden Wert: " + kpi_value
 
     answer = {"fulfillmentText": "hello world", "fulfillmentMessages": [{"text": {"text": [message]}}]}
