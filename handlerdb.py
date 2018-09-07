@@ -14,7 +14,7 @@ class HandlerDB:
 
             # Parameter for DB connection
             params = {
-                'database': 'lauchassistent',
+                'dbname': 'lauchassistent',
                 'user': 'lauchassistent',
                 'password': 'Lauchistsuper18!',
                 'host': 'localhost',
@@ -34,7 +34,7 @@ class HandlerDB:
     # Function: Execute SQL Statement and return result
     def execute(self, sql_statement):
         # Execute SQL Statement
-        exe = self.DB.cursor()
+        exe = self.DB.
         exe.execute(sql_statement)
 
         # Save result
