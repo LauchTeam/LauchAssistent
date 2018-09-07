@@ -8,7 +8,7 @@ def hello_world():
     db = handlerdb.HandlerDB()
     data = request.get_json()
 
-    kpi_name = data["queryResult"]["parameters"]["par_country"]
+    kpi_name = data["queryResult"]["parameters"]["var_kpi"]
     kpi_value = db.Execute("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = '" + data["queryResult"]["parameters"]["var_kpi"] + "';")
 
     # print(data["queryResult"]["parameters"]["par_country"])
