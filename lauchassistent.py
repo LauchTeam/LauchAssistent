@@ -11,7 +11,8 @@ def hello_world():
     db.connectto()
 
     kpi_name = data["queryResult"]["parameters"]["var_kpi"]
-    kpi_value = db.getresult("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = '" + data["queryResult"]["parameters"]["var_kpi"] + "';")
+    # kpi_value = db.getresult("SELECT kpi_value FROM finance.table_kpi WHERE kpi_name = '" + data["queryResult"]["parameters"]["var_kpi"] + "';")
+    kpi_value = db.getresult("SELECT * FROM finance.table_kpi")
 
     message = "Die KPI " + kpi_name + "hat folgenden Wert: " + kpi_value
 
