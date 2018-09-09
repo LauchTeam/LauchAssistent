@@ -34,11 +34,11 @@ class HandlerDB:
     # Function: Execute SQL Statement and return result
     def getresult(self, sql_statement):
         # Execute SQL Statement
-        self.cur = self.DB.cursor
+        self.cur = self.DB.cursor()
         self.cur.execute(sql_statement)
 
         # Save result
-        result = self.cur.fetchall()
+        result = self.cur.fetchone()[0]
 
         # return result
         return result
