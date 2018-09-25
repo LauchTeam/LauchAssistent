@@ -9,7 +9,7 @@ class HandlerDB:
         self.DB = ""
 
     # Function: Connect to Database
-    def connectto(self):
+    def connect_to(self):
         try:
 
             # Parameter for DB connection
@@ -32,17 +32,17 @@ class HandlerDB:
             return False
 
     # Function: Execute SQL Statement and return result
-    def getresult(self, sql_statement):
+    def get_result(self, sql_statement):
         # Execute SQL Statement
-        self.cur = self.DB.cursor()
-        self.cur.execute(sql_statement)
+        cur = self.DB.cursor()
+        cur.execute(sql_statement)
 
         # Save result
-        result = self.cur.fetchone()[0]
+        result = cur.fetchone()[0]
 
         # return result
         return result
 
-    # Funtion: Close Connection
-    def closeconnection(self):
+    # Function: Close Connection
+    def close_connection(self):
         self.DB.close()
