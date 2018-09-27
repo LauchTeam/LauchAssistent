@@ -1,27 +1,22 @@
 from flask import Flask, request, Response, json
 import handlerdb
+import lauchassistent
 app = Flask(__name__)
 
 
 @app.route('/lauchassistent', methods=['GET', 'POST'])
 def get_request():
-    db = handlerdb.HandlerDB()
+
     data = request.get_json()
+    lauch = lauchassistent.LauchAssistent()
 
-    db.connect_to()
-
-    kpi_name = data["queryResult"]["parameters"]["var_kpi"]
-    kpi_value = db.get_result("""SELECT "KPI_VALUE" FROM finance.table_kpi WHERE "KPI_NAME" = '""" + data["queryResult"]["parameters"]["var_kpi"] + """';""")
-
-    message = "Die KPI " + kpi_name + " hat folgenden Wert: " + str(kpi_value)
+    message = lauch.process_request(data)
 
     answer = {"fulfillmentText": "Answer", "fulfillmentMessages": [{"text": {"text": [message]}}]}
     js = json.dumps(answer)
 
     resp = Response(js, status=200, mimetype='application/json')
     resp.headers['test'] = 'Testheader'
-
-    db.close_connection()
 
     return resp
 
